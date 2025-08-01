@@ -16,10 +16,11 @@ const Login = () => {
       );
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful!");
-      // ✅ Navigate to dashboard
+
+      // Add a slight delay to let toast show before redirect
       setTimeout(() => {
         navigate("/dashboard");
-      }, 500); // Small delay to ensure toast shows before redirect
+      }, 500);
     } catch (err) {
       toast.error("Login failed!");
     }
