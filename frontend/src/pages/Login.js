@@ -10,10 +10,16 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://mern-blog-backend-m0x4.onrender.com/api/auth/login', form);
+      const res = await axios.post(
+        'https://mern-blog-backend-m0x4.onrender.com/api/auth/login',
+        form
+      );
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful!");
-      navigate("/dashboard");
+      // ✅ Navigate to dashboard
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 500); // Small delay to ensure toast shows before redirect
     } catch (err) {
       toast.error("Login failed!");
     }
@@ -23,10 +29,20 @@ const Login = () => {
     <div className="col-md-6 mx-auto">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" className="form-control mb-2"
-          onChange={e => setForm({ ...form, username: e.target.value })} />
-        <input type="password" placeholder="Password" className="form-control mb-2"
-          onChange={e => setForm({ ...form, password: e.target.value })} />
+        <input
+          type="text"
+          placeholder="Username"
+          className="form-control mb-2"
+          onChange={e => setForm({ ...form, username: e.target.value })}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className="form-control mb-2"
+          onChange={e => setForm({ ...form, password: e.target.value })}
+          required
+        />
         <button className="btn btn-success w-100">Login</button>
       </form>
     </div>
