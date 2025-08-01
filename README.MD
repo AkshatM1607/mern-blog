@@ -75,15 +75,18 @@ cd ../frontend
 npm install
 npm start
 
-
-🧠 Author
-👨‍💻 Built with 💙 by Akshat
-[LinkedIn](https://www.linkedin.com/in/akshat-mehra-1607)
+---
 
 
 📄 License
 This project is open-source and free to use.
 
 
----
+
+
+
+
+
+
+
 
