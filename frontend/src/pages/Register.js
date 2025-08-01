@@ -8,7 +8,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', form);
+      await axios.post('https://mern-blog-backend-m0x4.onrender.com/api/auth/register', form);
       toast.success("Registered successfully!");
     } catch (err) {
       toast.error("Registration failed!");

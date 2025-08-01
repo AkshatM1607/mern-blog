@@ -5,7 +5,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/posts")
+    axios.get('https://mern-blog-backend-m0x4.onrender.com/api/posts')
       .then(res => setPosts(res.data))
       .catch(err => console.error("Failed to fetch posts", err));
   }, []);

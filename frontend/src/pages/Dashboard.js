@@ -9,7 +9,7 @@ const Dashboard = () => {
   const token = localStorage.getItem("token");
 
   const fetchPosts = () => {
-    axios.get("http://localhost:5000/api/posts")
+    axios.get("https://mern-blog-backend-m0x4.onrender.com/api/posts")
       .then(res => {
         const user = parseJwt(token)?.username;
         const mine = res.data.filter(p => p.author === user);
@@ -32,7 +32,7 @@ const Dashboard = () => {
   const createPost = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/posts", post, {
+      await axios.post("https://mern-blog-backend-m0x4.onrender.com/api/posts", post, {
         headers: { Authorization: token }
       });
       toast.success("Post created!");
@@ -45,7 +45,7 @@ const Dashboard = () => {
 
   const deletePost = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+      await axios.delete(`https://mern-blog-backend-m0x4.onrender.com/api/posts/${id}`, {
         headers: { Authorization: token }
       });
       toast.success("Post deleted!");
@@ -59,10 +59,20 @@ const Dashboard = () => {
     <div>
       <h2>✍️ Write New Blog</h2>
       <form onSubmit={createPost}>
-        <input type="text" className="form-control my-2" placeholder="Title"
-          value={post.title} onChange={e => setPost({ ...post, title: e.target.value })} />
-        <textarea className="form-control my-2" placeholder="Content"
-          rows="4" value={post.content} onChange={e => setPost({ ...post, content: e.target.value })}></textarea>
+        <input
+          type="text"
+          className="form-control my-2"
+          placeholder="Title"
+          value={post.title}
+          onChange={e => setPost({ ...post, title: e.target.value })}
+        />
+        <textarea
+          className="form-control my-2"
+          placeholder="Content"
+          rows="4"
+          value={post.content}
+          onChange={e => setPost({ ...post, content: e.target.value })}
+        ></textarea>
         <button className="btn btn-primary w-100">Post</button>
       </form>
 
